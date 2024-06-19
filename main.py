@@ -43,3 +43,18 @@ def all_numbers_different(num):
             return False
         digitos_vistos.add(digito)
     return True
+
+## FUNCIONES EJERCICIO 3
+
+def text_chain_based_on_digit_sum(num):
+    suma = sumar_digitos(num)
+    while suma > 9:
+        suma = sumar_digitos(suma)
+    return str(suma) + str(num)
+
+def sumar_digitos(num):
+    s = str(num)
+    suma = 0
+    for digito in s:
+        suma += int(digito)
+    return suma
