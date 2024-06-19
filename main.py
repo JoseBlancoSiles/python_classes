@@ -1,4 +1,6 @@
-# Funciones
+# FUNCIONES
+
+## FUNCIONES EJERCICIO 1
 
 def is_primo(num):
     '''Función que recibe un número y devuelve True para números primos y false para números no primos'''
@@ -26,4 +28,18 @@ def is_primo_circular(num):
     for rotacion in rotar_numero(num):
         if not is_primo(rotacion):
             return False
+    return True
+
+## FUNCIONES EJERCICIO 2
+
+def all_numbers_different(num):
+    '''Recibe un número y devuelve True si todos los dígitos son diferentes, false si al menos un número se repite'''
+    if num < 10:
+        return True
+    digitos_vistos = set()
+    s = str(num)
+    for digito in s:
+        if digito in digitos_vistos:
+            return False
+        digitos_vistos.add(digito)
     return True
