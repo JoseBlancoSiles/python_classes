@@ -1,0 +1,17 @@
+attrs==23.1.0
+click==8.0.3
+colorama==0.4.4
+Cython==3.0.8
+iniconfig==2.0.0
+Jinja2==3.0.3
+jsonschema==4.6.2
+MarkupSafe==2.0.1
+packaging==24.1
+pluggy==1.5.0
+pyrsistent==0.20.0
+pytest==8.2.2
+pytoml==0.1.21
+PyYAML==6.0.1
+setuptools==69.0.3
+xmltodict==0.12.0
+yasha==5.0

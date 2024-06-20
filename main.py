@@ -65,8 +65,6 @@ def sumar_digitos(num):
 
 ## EJERCICO 4
 
-import string
-
 class CustomString:
     def __init__(self, cadena_inicial):
         self.caracteres_permitidos = set(string.ascii_letters + ' ')
