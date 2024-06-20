@@ -19,3 +19,5 @@ Este proyecto contiene varias funciones y clases en Python para resolver problem
     source venv/bin/activate  # En Windows usa `venv\Scripts\activate`
 
     pip install -r requirements.txt
+
+    pytest # Para lanzar los tests, recomendable desde el directorio principal
