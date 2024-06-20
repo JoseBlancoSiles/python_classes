@@ -92,3 +92,25 @@ class CustomString:
         filtrado = self.filtrar_string(s)
         cadena = self.value + filtrado
         return CustomString(cadena)
+    
+## EJERCICIO 5
+
+def max_subsecuencia(list_num):
+    '''Recibe una lista de enteros y devuelve una tupla(lista_numeros_max_subsecuencia, suma_max_subsecuencia)'''
+    suma_actual = list_num[0]
+    suma_max = list_num[0]
+    izq = temp_izq = der = 0
+
+    for i in range(1, len(list_num)):
+        if suma_actual < 0:
+            suma_actual = list_num[i]
+            temp_izq = i
+        else:
+            suma_actual += list_num[i]
+
+        if suma_actual > suma_max:
+            suma_max = suma_actual
+            der = i
+            izq = temp_izq
+
+    return (list_num[temp_izq:der + 1], suma_max)
