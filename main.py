@@ -47,12 +47,14 @@ def all_numbers_different(num):
 ## FUNCIONES EJERCICIO 3
 
 def text_chain_based_on_digit_sum(num):
+    '''Recibe un número, devuelve la última suma válida y la añade a la izquierda del número recibido'''
     suma = sumar_digitos(num)
     while suma > 9:
         suma = sumar_digitos(suma)
     return str(suma) + str(num)
 
 def sumar_digitos(num):
+    '''Recibe un número  súma sus dígitos'''
     s = str(num)
     suma = 0
     for digito in s:
