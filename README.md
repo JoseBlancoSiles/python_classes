@@ -6,16 +6,16 @@ Este proyecto contiene varias funciones y clases en Python para resolver problem
 
 ## Requisitos Previos
 
-- Python 3.6 o superior
+- Python 3.6 o superior recomendado 3.12.0
 - pip (gestor de paquetes de Python)
 
 ## Instalación
 
-1. Clonar el repositorio:
-
    ```sh
-   git clone https://github.com/tu-usuario/python_assessment_clarcat.git
+   git clone https://github.com/JoseBlancoSiles/python_assessment_clarcat.git
    cd python_assessment_clarcat
 
+    python -m venv venv # Recomendable crear entorno virtual por tema dependencias
+    source venv/bin/activate  # En Windows usa `venv\Scripts\activate`
 
-
+    pip install -r requirements.txt
