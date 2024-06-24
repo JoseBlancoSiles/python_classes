@@ -1,6 +1,7 @@
 # IMPORTS
 
 import string
+import os
 
 ## EJERCICIO 1
 
@@ -112,3 +113,115 @@ def max_subsecuencia(list_num):
             izq = temp_izq
 
     return (list_num[temp_izq:der + 1], suma_max)
+
+# EJERCICIO 6
+
+def ordenar_0_1(list_num):
+    '''Recibe una lista de números entre 0 y 1 y los ordena ascendentemente'''
+    num_total = len(list_num)
+    num_ceros = list_num.count(0)
+    return [0] * num_ceros + [1] * (num_total - num_ceros)
+
+ordenar_0_1([0,1,1,1,0])
+
+# EJERCICIO 7
+
+class Ordenador:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+    
+class Sobremesa(Ordenador):
+    def __init__(self, marca, modelo, volumen):
+        super().__init__(marca, modelo)
+        self.volumen = volumen
+
+    def __str__(self):
+        return f"Marca: {self.marca}, Modelo: {self.modelo}, Volumen: {self.volumen} L"
+
+class Portatil(Ordenador):
+    def __init__(self, marca, modelo, bateria):
+        super().__init__(marca, modelo)
+        self.bateria = bateria
+
+    def __str__(self):
+        return f"Marca: {self.marca}, Modelo: {self.modelo}, Batería: {self.bateria} h"
+    
+# EJERCICIO 8
+
+class Usuario:
+    numero_usuarios = 0
+    def __init__(self, nombre, contraseña):
+        self.nombre = nombre
+        self.contraseña = contraseña
+        Usuario.numero_usuarios += 1
+
+    @classmethod
+    def contar_numero_usutarios(cls):
+        return f"El número de usuarios creados es {cls.numero_usuarios}"
+    
+# EJERCICIO 9
+
+import os
+
+class Archivos:
+    def __init__(self, directorio):
+        self.directorio = directorio
+        os.makedirs(directorio)
+    
+    def listar(self):
+        for archivo in os.listdir(self.directorio):
+            print(archivo)
+    
+    def crear(self, archivo):
+        ruta = os.path.join(self.directorio, archivo) 
+        with open(ruta, 'a'):
+            pass
+    
+    def eliminar(self, archivo):
+        ruta = os.path.join(self.directorio, archivo) 
+        os.remove(ruta)
+
+    @staticmethod
+    def obtener_extension(archivo):
+        return os.path.splitext(archivo)[1]
+    
+class ArchivosAudio(Archivos):
+    EXTENSIONES = ['.wav', '.mp3']
+
+    def __init__(self, directorio):
+        super().__init__(directorio)
+    
+    def listar(self):
+        for archivo in os.listdir(self.directorio):
+            if self.extension_valida(archivo):
+                print(archivo)
+    
+    def crear(self, archivo):
+        if self.extension_valida(archivo):
+            super().crear(archivo)
+    
+    def eliminar(self, archivo):
+        if self.extension_valida(archivo):
+            super().eliminar(archivo)
+
+    @staticmethod
+    def extension_valida(archivo):
+        '''Método para devolver is la extensión es válida y así no tener que comprobarlo para todos los otros métodos'''
+        extension = os.path.splitext(archivo)[1]
+        return extension in ArchivosAudio.EXTENSIONES
+    
+# EJERCICIO 10
+# TO DO 
+# class Producto:
+#     def __init__(self, nombre, precio, stock):
+#         self.nombre = nombre
+#         self.precio = precio
+#         self.stock = stock
+
+# class Carrito:
+#     def __init__(self):
+#         self.productos = []
+    
+#     def agregar_articulo(self, producto):
+#         pass
