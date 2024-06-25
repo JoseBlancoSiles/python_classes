@@ -22,8 +22,9 @@ Se ha agregado recientemente un script en python para hacer peticiones a una url
     pip install -r requirements.txt
 
     pytest # Para lanzar los tests, recomendable desde el directorio principal
+   ```
 
-    # Para probar el [Script de peticiones del ejercicio 11](./request.py) lanzar desde el directorio principal del proyecto:
-
+   Para probar el [Script de peticiones del ejercicio 11](./request.py) lanzar desde el directorio principal del proyecto:
+   ```sh
     python request.py
    ```
