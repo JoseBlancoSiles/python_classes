@@ -3,6 +3,7 @@
 
 ## Python Assessment Project
 Este proyecto contiene varias funciones y clases en Python para resolver problemas técnicos. Incluye pruebas unitarias para verificar la funcionalidad.
+Se ha agregado recientemente un script en python para hacer peticiones a una url.
 
 ## Requisitos Previos
 
@@ -21,3 +22,8 @@ Este proyecto contiene varias funciones y clases en Python para resolver problem
     pip install -r requirements.txt
 
     pytest # Para lanzar los tests, recomendable desde el directorio principal
+
+    # Para probar el [Script de peticiones del ejercicio 11](./request.py) lanzar desde el directorio principal del proyecto:
+
+    python request.py
+   ```
