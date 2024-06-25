@@ -1,5 +1,9 @@
+# Con el script sin paralelismo se ha tardado unos 165 segundos en hacer las 1000 peticiones. Vamos a implementar ahora el paralelismo.
+# Con 100 hilos (max_workers = 100), se reduce el tiempo a ~ 20 segundos.
+
 import requests
 import time
+import concurrent.futures as cf
 
 def fetch(url):
     try:
@@ -11,10 +15,13 @@ def fetch(url):
 def main(url, num_requests):
     print(f'Empezando las {num_requests} peticiones...')
     start_time = time.time()
-    
-    for i in range(num_requests):
-        fetch(url)
-        print(f"Petición número {i+1} completada")
+
+    # con ThreadPoolExecutor podemos hacer peticiones en paralelo en vez de esperar a la anterior
+    with cf.ThreadPoolExecutor(max_workers=100) as executor:
+        futures = [executor.submit(fetch, url) for _ in range(num_requests)] # Si los 100 hilos están ocupados, se programa una nueva tarea para que se ejecute cuando esté disponible un hilo
+        for i, _ in enumerate(cf.as_completed(futures)):
+            print(f"Petición número {i+1} completada")
+
     última_peticion = fetch(url)
     print(última_peticion)
     
