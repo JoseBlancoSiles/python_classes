@@ -212,16 +212,75 @@ class ArchivosAudio(Archivos):
         return extension in ArchivosAudio.EXTENSIONES
     
 # EJERCICIO 10
-# TO DO 
-# class Producto:
-#     def __init__(self, nombre, precio, stock):
-#         self.nombre = nombre
-#         self.precio = precio
-#         self.stock = stock
 
-# class Carrito:
-#     def __init__(self):
-#         self.productos = []
+class Producto:
+    def __init__(self, producto, precio, stock):
+        self.producto = producto
+        self.precio = precio
+        self.stock = stock
     
-#     def agregar_articulo(self, producto):
-#         pass
+    def reducir_stock(self, cantidad):
+        if cantidad <= self.stock:
+            self.stock -= cantidad
+            return True
+        else:
+            return False
+    
+    def incrementar_stock(self, cantidad):
+        self.stock += cantidad
+    
+class Carrito:
+    def __init__(self):
+        self.productos = []
+        self.coste_total = 0
+
+    def añadir_al_carrito(self, producto, unidades):
+        if unidades <= producto.stock:
+            self.productos.append({'producto': producto, 'unidades':unidades})
+            producto.reducir_stock(unidades)
+            self.coste_total += unidades * producto.precio
+        else:
+            print(f'No hay stock suficiente de {producto}')
+
+    def eliminar_del_carrito(self, producto):
+        for item in self.productos:
+            if item['producto'] == producto:
+                producto.incrementar_stock(item['unidades'])
+                self.coste_total -= item['unidades'] * producto.precio  # Actualizar el coste total
+                self.productos.remove(item)
+
+    def vaciar_el_carrito(self):
+        self.productos = []
+    
+    def mostrar_carrito(self):
+        print('Carrito de la compra:')
+        for item in self.productos:
+            producto = item['producto']
+            unidades = item['unidades']
+            coste_producto = unidades * producto.precio
+            print(f"{producto.producto}, Unidades: {unidades}, Coste del producto: {coste_producto:.2f} €")
+        print(f"Coste Total: {self.coste_total:.2f} €")
+
+# Crear productos
+manzanas = Producto("Manzanas", 0.15, 1000)
+peras = Producto("Peras", 0.22, 500)
+zanahorias = Producto("Zanahorias", 0.25, 1500)
+
+# Crear el carrito
+carrito = Carrito()
+
+# Añadir productos al carrito
+carrito.añadir_al_carrito(manzanas, 10)
+carrito.añadir_al_carrito(peras, 5)
+carrito.añadir_al_carrito(zanahorias, 200)  # No debería permitirlo por falta de stock
+
+# Mostrar el carrito
+carrito.mostrar_carrito()
+
+# Eliminar un producto del carrito
+carrito.eliminar_del_carrito(peras)
+carrito.mostrar_carrito()
+
+# Vaciar el carrito
+carrito.vaciar_el_carrito()
+carrito.mostrar_carrito()
