@@ -3,7 +3,7 @@
 import string
 import os
 
-## EJERCICIO 1
+# EJERCICIO 1
 
 def is_primo(num):
     '''Función que recibe un número y devuelve True para números primos y false para números no primos'''
@@ -33,7 +33,7 @@ def is_primo_circular(num):
             return False
     return True
 
-## EJERCICIO 2
+# EJERCICIO 2
 
 def all_numbers_different(num):
     '''Recibe un número y devuelve True si todos los dígitos son diferentes, false si al menos un número se repite'''
@@ -47,7 +47,7 @@ def all_numbers_different(num):
         digitos_vistos.add(digito)
     return True
 
-## EJERCICIO 3
+# EJERCICIO 3
 
 def text_chain_based_on_digit_sum(num):
     '''Recibe un número, devuelve la última suma válida y la añade a la izquierda del número recibido'''
@@ -64,7 +64,7 @@ def sumar_digitos(num):
         suma += int(digito)
     return suma
 
-## EJERCICO 4
+# EJERCICO 4
 
 class CustomString:
     def __init__(self, cadena_inicial):
@@ -92,7 +92,7 @@ class CustomString:
         cadena = self.value + filtrado
         return CustomString(cadena)
     
-## EJERCICIO 5
+# EJERCICIO 5
 
 def max_subsecuencia(list_num):
     '''Recibe una lista de enteros y devuelve una tupla(lista_numeros_max_subsecuencia, suma_max_subsecuencia)'''
@@ -260,27 +260,3 @@ class Carrito:
             coste_producto = unidades * producto.precio
             print(f"{producto.producto}, Unidades: {unidades}, Coste del producto: {coste_producto:.2f} €")
         print(f"Coste Total: {self.coste_total:.2f} €")
-
-# Crear productos
-manzanas = Producto("Manzanas", 0.15, 1000)
-peras = Producto("Peras", 0.22, 500)
-zanahorias = Producto("Zanahorias", 0.25, 1500)
-
-# Crear el carrito
-carrito = Carrito()
-
-# Añadir productos al carrito
-carrito.añadir_al_carrito(manzanas, 10)
-carrito.añadir_al_carrito(peras, 5)
-carrito.añadir_al_carrito(zanahorias, 200)  # No debería permitirlo por falta de stock
-
-# Mostrar el carrito
-carrito.mostrar_carrito()
-
-# Eliminar un producto del carrito
-carrito.eliminar_del_carrito(peras)
-carrito.mostrar_carrito()
-
-# Vaciar el carrito
-carrito.vaciar_el_carrito()
-carrito.mostrar_carrito()
