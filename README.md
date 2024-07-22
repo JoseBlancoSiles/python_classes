@@ -1,6 +1,3 @@
-# PYTHON ASSESSMENT CLARCAT
-
-
 ## Python Assessment Project
 Este proyecto contiene varias funciones y clases en Python para resolver problemas técnicos. Incluye pruebas unitarias para verificar la funcionalidad.
 Se ha agregado recientemente un script en python para hacer peticiones a una url.
